@@ -21,3 +21,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Telegram backend secrets and local backups
+.env
+.env.*
+!.env.example
+.local-backups/

@@ -1,0 +1,14 @@
+node_modules/
+dist/
+coverage/
+src/generated/
+.env
+.env.*
+!.env.example
+*.log
+.local-backups/
+.test-postgres/
+.test-tools/
+exports/
+
+.postgres/

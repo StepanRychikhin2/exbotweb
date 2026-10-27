@@ -1,70 +1,132 @@
-# Getting Started with Create React App
+# exbotweb
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Проєкт для особистого обліку витрат із React-основою та окремим Telegram-ботом на Node.js/TypeScript.
 
-## Available Scripts
+React-застосунок залишається в корені репозиторію: `src/`, `public/`, Create React App і поточні залежності. Telegram-бот, PostgreSQL, Prisma, міграції та тести розташовані в `server/` і мають власний `package.json` та lockfile.
 
-In the project directory, you can run:
+Зараз облік витрат працює через Telegram. Вебінтерфейс обліку та HTTP API ще потрібно реалізувати поверх наявної React-основи й серверного сервісу витрат.
 
-### `npm start`
+## Структура
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```text
+src/                  наявний React-застосунок
+public/               файли React-застосунку
+package.json          React-залежності та команди запуску обох частин
+server/
+  src/domain/         суми, дати, категорії й парсер
+  src/services/       облік витрат і Excel-експорт
+  src/bot/            Telegram-обробники та діалоги
+  src/db/             підключення Prisma до PostgreSQL
+  prisma/             схема й міграції
+  tests/              автономні та інтеграційні тести
+  compose.yaml        локальний PostgreSQL
+  .env.example        шаблон серверних налаштувань
+  README.md           повна інструкція Telegram-бота
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Встановлення та React
 
-### `npm test`
+Потрібні Node.js 24 LTS (24.11 або новіша в гілці 24) і npm. На Windows x64 PostgreSQL запускається командою `npm run db:local` без Docker. Також можна використати Docker Desktop або власну базу PostgreSQL.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+У корені `exbotweb`:
 
-### `npm run build`
+```powershell
+npm ci
+npm run bot:install
+npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`npm start` запускає React на `http://localhost:3000`. Зупинка — Ctrl+C. Поточні React-команди `start`, `build`, `test` та `eject` збережено. React і сервер мають окремі залежності; `npm ci` в корені не встановлює серверні пакети, для них потрібна команда `bot:install`.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Локальна база без Docker (Windows)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+На Windows x64 запустіть із кореня проєкту:
 
-### `npm run eject`
+```powershell
+npm run db:local
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Команда створює справжній PostgreSQL 17 у фоні, генерує пароль, заповнює параметри бази в `server/.env` і застосовує міграції. Наявний `BOT_TOKEN` зберігається. Якщо `DATABASE_URL` уже вказує на іншу базу, команда не замінює це підключення.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```powershell
+npm run db:local:status
+npm run db:local:stop
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Дані розташовані в **`server/.postgres/data/`** і залишаються після зупинки чи перезавантаження комп’ютера. Для повторного запуску виконайте `npm run db:local`; системна служба й автозапуск Windows не додаються. База доступна лише через `127.0.0.1`, початковий порт — `5432`.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Не видаляйте `server/.postgres/` або згенерований пароль, якщо хочете зберегти доступ до витрат. Папка виключена з Git. Журнал запуску: `server/.postgres/postgres.log`. Робіть резервні копії PostgreSQL.
 
-## Learn More
+Цей спосіб призначений для локальної розробки Windows x64 і використовує [embedded-postgres](https://github.com/leinelissen/embedded-postgres). Для сервера чи іншої ОС використовуйте звичайний PostgreSQL або Docker Compose.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Запуск бота
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Створіть бота через офіційного [@BotFather](https://t.me/BotFather) командою `/newbot`. Скопіюйте шаблон (якщо `server/.env` ще не існує):
 
-### Code Splitting
+```powershell
+Copy-Item server/.env.example server/.env
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+У Linux/macOS: `cp server/.env.example server/.env`.
 
-### Analyzing the Bundle Size
+Заповніть у **`server/.env`**:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- `BOT_TOKEN` — справжній токен від BotFather.
+- `DATABASE_URL` — автоматично заповнюється через `db:local`; для Docker чи зовнішньої бази задайте власний URL.
+- `POSTGRES_PASSWORD` — генерується через `db:local`; для Docker Compose задайте власний пароль.
+- `DEFAULT_CURRENCY=UAH`, `TIME_ZONE=Europe/Kyiv`, `NODE_ENV=development`.
+- Для Compose початкові значення: `POSTGRES_USER=expensebot`, `POSTGRES_DB=expensebot`, `POSTGRES_PORT=5432`.
 
-### Making a Progressive Web App
+Формат локального URL: `postgresql://expensebot:<URL-encoded-пароль>@127.0.0.1:5432/expensebot`. Замініть позначення пароля власним значенням без кутових дужок. Параметри користувача, бази та порту мають збігатися з Compose.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Токен Telegram і пароль БД використовує лише сервер. Не додавайте їх до React-коду або змінних `REACT_APP_*`, які потрапляють у браузерну збірку. Не публікуйте `.env`.
 
-### Advanced Configuration
+У новому терміналі з кореня `exbotweb`:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```powershell
+npm run db:local
+npm run db:generate
+npm run bot:dev
+```
 
-### Deployment
+React і бот можуть працювати одночасно у двох терміналах. Для зібраного бота: `npm run bot:build`, потім `npm run bot:start`. Зупинка бота — Ctrl+C; локальної бази — `npm run db:local:stop`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Для Docker Compose замість `db:local` виконайте `npm run db:up`, потім `npm run db:deploy`. Docker-база зупиняється через `npm run db:stop`; `npm run db:down` видаляє контейнери, зберігаючи том. Повна інструкція для Docker — у `server/README.md`.
 
-### `npm run build` fails to minify
+## Команди бота
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+`/start`, `/help`, `/add`, `/today`, `/month`, `/last`, `/undo`, `/categories`, `/checkcategory`, `/currency`, `/export`, `/cancel`.
+
+Приклади: `ігри 500`, `кава 85,50`, `500 ігри`, `/currency USD`, `/export 2026-10`.
+
+`/checkcategory` показує кнопки категорій. Після вибору бот надсилає суми за поточний місяць та за весь час, окремо за валютами. Доступні власні й архівовані категорії; довгий список має сторінки.
+
+В Excel під списком витрат розташовані підсумки за категоріями та загальна сума за місяць експорту. Різні валюти підсумовуються окремо.
+
+Бот підтримує точні суми в найменших одиницях валюти, окремі підсумки валют, категорії, підтвердження видалення, ізоляцію користувачів та справжній Excel-експорт. Працює в приватних чатах через long polling. Повний опис, ручні сценарії перевірки, налаштування сервера та поширені помилки — у [server/README.md](server/README.md).
+
+## Перевірки та збірка
+
+Усі ці команди виконуються з кореня:
+
+```powershell
+npm run db:generate
+npm run db:validate
+npm run bot:typecheck
+npm run bot:test
+npm run build:all
+```
+
+- `npm run build` — React-збірка в `build/`.
+- `npm run bot:build` — серверна збірка в `server/dist/`.
+- `npm run build:all` — обидві збірки.
+- `npm run bot:test` — автономні тести серверної логіки та XLSX.
+- `npm run bot:test:integration` — тести зі справжнім PostgreSQL; потрібна окрема тестова база й `TEST_DATABASE_URL`, див. [інструкцію](server/README.md#автоматичні-перевірки-й-розробка).
+- `npm run db:status`, `npm run db:studio` — стан міграцій і локальне адміністрування.
+- Для нової міграції перейдіть у `server/` і виконайте `npm run db:migrate -- --name describe_change`, потім `npm run db:generate`.
+
+Приклад systemd для постійного запуску бота знаходиться в `server/deploy/expensebot.service`; він розрахований на каталог `/opt/exbotweb/server`. Секрети та з’єднання з PostgreSQL налаштовуються на сервері.
+
+## Наступний етап
+
+Під’єднати React до сервісу витрат через HTTP API з перевіреною авторизацією, потім реалізувати вебекрани додавання витрат, історії та підсумків. Логіка обліку вже відокремлена від Telegram у `server/src/services/` і `server/src/domain/`.

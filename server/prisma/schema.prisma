@@ -1,0 +1,75 @@
+generator client {
+  provider               = "prisma-client"
+  output                 = "../src/generated/prisma"
+  moduleFormat           = "esm"
+  generatedFileExtension = "ts"
+  importFileExtension    = "js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id              String    @id @default(cuid())
+  telegramId      BigInt    @unique
+  defaultCurrency String    @default("UAH") @db.VarChar(3)
+  createdAt       DateTime  @default(now()) @db.Timestamptz(3)
+  categories      Category[]
+  expenses        Expense[]
+  deletedExpenses DeletedExpense[]
+  session         BotSession?
+}
+
+model Category {
+  id         String    @id @default(cuid())
+  userId     String
+  name       String    @db.VarChar(40)
+  nameKey    String    @db.VarChar(80)
+  defaultKey String?   @db.VarChar(20)
+  archivedAt DateTime? @db.Timestamptz(3)
+  createdAt  DateTime  @default(now()) @db.Timestamptz(3)
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expenses   Expense[]
+
+  @@unique([userId, nameKey])
+  @@unique([userId, defaultKey])
+  // Composite FK below also enforces ownership inside PostgreSQL.
+  @@unique([id, userId])
+  @@index([userId, archivedAt])
+}
+
+model Expense {
+  id          String   @id @default(cuid())
+  userId      String
+  categoryId  String
+  amountMinor BigInt
+  currency    String   @db.VarChar(3)
+  description String   @db.VarChar(300)
+  expenseDate DateTime @db.Date
+  createdAt   DateTime @default(now()) @db.Timestamptz(3)
+  sourceKey   String   @db.VarChar(100)
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  category    Category @relation(fields: [categoryId, userId], references: [id, userId], onDelete: Restrict)
+
+  @@unique([userId, sourceKey])
+  @@index([userId, expenseDate, createdAt])
+  @@index([userId, createdAt, id])
+}
+
+model BotSession {
+  userId    String   @id
+  data      Json
+  expiresAt DateTime @db.Timestamptz(3)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// Minimal idempotency tombstone: contains no amount, description or category.
+model DeletedExpense {
+  userId    String
+  sourceKey String   @db.VarChar(100)
+  deletedAt DateTime @default(now()) @db.Timestamptz(3)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, sourceKey])
+}

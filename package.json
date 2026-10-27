@@ -16,7 +16,27 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "bot:install": "npm --prefix server ci",
+    "bot:dev": "npm --prefix server run dev",
+    "bot:build": "npm --prefix server run build",
+    "bot:start": "npm --prefix server start",
+    "bot:typecheck": "npm --prefix server run typecheck",
+    "bot:test": "npm --prefix server test",
+    "bot:test:integration": "npm --prefix server run test:integration",
+    "db:generate": "npm --prefix server run db:generate",
+    "db:validate": "npm --prefix server run db:validate",
+    "db:deploy": "npm --prefix server run db:deploy",
+    "db:migrate": "npm --prefix server run db:migrate",
+    "db:status": "npm --prefix server run db:status",
+    "db:studio": "npm --prefix server run db:studio",
+    "db:up": "npm --prefix server run db:up",
+    "db:stop": "npm --prefix server run db:stop",
+    "db:down": "npm --prefix server run db:down",
+    "build:all": "npm run build && npm run bot:build",
+    "db:local": "npm --prefix server run db:local",
+    "db:local:stop": "npm --prefix server run db:local:stop",
+    "db:local:status": "npm --prefix server run db:local:status"
   },
   "eslintConfig": {
     "extends": [
