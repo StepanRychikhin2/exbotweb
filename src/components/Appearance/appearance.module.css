@@ -1,0 +1,13 @@
+
+.appearance {
+	display: flex;
+	gap: 2px;
+	align-items: center;
+}
+.language-button {
+	font-weight: 600;
+	font-size: 12px;
+	min-width: 44px;
+	min-height: 44px;
+	color: var(--muted);
+}

@@ -1,0 +1,18 @@
+
+.channel-options {
+	display: flex;
+	gap: 25px;
+}
+.channel-options label {
+	display: flex;
+	align-items: center;
+	gap: 9px;
+	font-size: 13px;
+	min-height: 44px;
+}
+.channel-options input {
+	width: 18px;
+	min-height: 18px;
+	height: 18px;
+	accent-color: var(--accent);
+}

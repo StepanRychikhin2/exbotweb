@@ -1,0 +1,44 @@
+
+.period-control {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 5px;
+	margin: 25px 0;
+}
+.period-control button {
+	min-height: 40px;
+	padding: 9px 15px;
+	border-radius: 9px;
+	font-size: 12px;
+	color: var(--muted);
+	display: flex;
+	align-items: center;
+	gap: 7px;
+}
+.period-control button:hover {
+	background: var(--surface);
+}
+.period-control button:global(.active) {
+	background: var(--surface-raised);
+	color: var(--text);
+}
+@media (max-width: 650px) {
+	.period-control {
+		gap: 3px;
+		margin: 22px -2px;
+	}
+	.period-control button {
+		font-size: 11px;
+		padding: 8px 10px;
+		min-height: 40px;
+	}
+	.period-control button svg {
+		width: 14px;
+	}
+}
+@media (max-width: 375px) {
+	.period-control button {
+		padding-inline: 8px;
+		font-size: 10px;
+	}
+}

@@ -1,0 +1,115 @@
+
+.category-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 16px;
+	margin-top: 24px;
+}
+.category-tile {
+	border: 1px solid var(--soft-line);
+	background: var(--surface);
+	border-radius: 17px;
+	padding: 23px;
+	text-align: left;
+	position: relative;
+	min-height: 190px;
+	display: flex;
+	align-items: flex-start;
+	flex-direction: column;
+}
+.category-tile:hover {
+	border-color: var(--line);
+	transform: translateY(-2px);
+}
+.category-tile > svg {
+	position: absolute;
+	right: 18px;
+	top: 30px;
+	color: var(--faint);
+}
+.category-tile :global(.category-icon) {
+	width: 44px;
+	height: 44px;
+	margin-bottom: 19px;
+}
+.category-tile h3 {
+	font-size: 14px;
+	font-weight: 500;
+	margin-bottom: 9px;
+	overflow-wrap: anywhere;
+}
+.category-tile > strong {
+	font-size: 23px;
+	letter-spacing: -0.7px;
+	font-variant-numeric: tabular-nums;
+	font-weight: 550;
+}
+.category-tile > :global(.muted) {
+	font-size: 10px;
+	margin-top: 4px;
+}
+.new-category {
+	border-style: dashed;
+	background: transparent;
+	justify-content: center;
+}
+.new-category :global(.category-icon) {
+	background: var(--surface);
+	color: var(--muted);
+}
+.new-category h3 {
+	color: var(--muted);
+}
+@media (max-width: 1150px) {
+	.category-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+@media (max-width: 900px) {
+	.category-grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+@media (max-width: 650px) {
+	.category-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 12px;
+		margin-top: 20px;
+	}
+	.category-tile {
+		padding: 20px 17px;
+		min-height: 182px;
+		border-radius: 16px;
+	}
+	.category-tile > svg {
+		right: 14px;
+		top: 27px;
+	}
+	.category-tile :global(.category-icon) {
+		margin-bottom: 19px;
+	}
+	.category-tile h3 {
+		font-size: 13px;
+		margin-bottom: 7px;
+	}
+	.category-tile > strong {
+		font-size: 22px;
+	}
+	.category-tile > :global(.muted) {
+		font-size: 9px;
+	}
+}
+@media (max-width: 375px) {
+	.category-tile {
+		padding: 17px 14px;
+	}
+	.category-tile > strong {
+		font-size: 20px;
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	
+	.category-tile:hover {
+		transform: none;
+	}
+}

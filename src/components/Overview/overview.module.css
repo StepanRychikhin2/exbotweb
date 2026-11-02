@@ -1,0 +1,125 @@
+
+.summary-card {
+	border-radius: 20px;
+	padding: 31px 36px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 30px;
+	align-items: center;
+	margin-bottom: 28px;
+}
+.main-stat > span:first-child {
+	font-size: 12px;
+	color: var(--muted);
+}
+.main-stat > strong {
+	display: block;
+	font-size: 45px;
+	letter-spacing: -1.7px;
+	font-weight: 560;
+	margin: 8px 0 12px;
+	line-height: 1.15;
+	font-variant-numeric: tabular-nums;
+}
+.stat-note {
+	display: flex;
+	align-items: center;
+	gap: 7px;
+	font-size: 10px;
+	color: var(--muted);
+}
+.secondary-stats {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+	border-left: 1px solid var(--line);
+	padding-left: 32px;
+}
+.secondary-stats span {
+	display: block;
+	font-size: 11px;
+	color: var(--muted);
+	margin-bottom: 8px;
+}
+.secondary-stats strong {
+	font-size: 23px;
+	letter-spacing: -0.6px;
+	font-weight: 550;
+	white-space: nowrap;
+	font-variant-numeric: tabular-nums;
+}
+.analytics-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+	align-items: start;
+}
+.recent-head {
+	border-top: 1px solid var(--soft-line);
+	padding-top: 20px;
+	margin-top: 4px;
+	margin-bottom: 5px;
+}
+@media (max-width: 1150px) {
+	.summary-card {
+		padding: 27px;
+	}
+	.secondary-stats {
+		padding-left: 23px;
+		gap: 15px;
+	}
+	.secondary-stats strong {
+		font-size: 19px;
+	}
+	.analytics-grid {
+		gap: 16px;
+	}
+}
+@media (max-width: 650px) {
+	.summary-card {
+		grid-template-columns: 1fr;
+		gap: 23px;
+		padding: 26px 24px;
+		margin-bottom: 25px;
+		border-radius: 19px;
+	}
+	.main-stat > span:first-child {
+		font-size: 11px;
+	}
+	.main-stat > strong {
+		font-size: 43px;
+		margin: 7px 0 11px;
+	}
+	.stat-note {
+		font-size: 9px;
+	}
+	.secondary-stats {
+		border-left: 0;
+		border-top: 1px solid var(--line);
+		padding: 19px 0 0;
+		gap: 24px;
+	}
+	.secondary-stats span {
+		font-size: 10px;
+		margin-bottom: 6px;
+	}
+	.secondary-stats strong {
+		font-size: 22px;
+	}
+	.analytics-grid {
+		grid-template-columns: 1fr;
+		gap: 18px;
+	}
+	.recent-head {
+		margin-top: 0;
+		padding-top: 20px;
+	}
+	.recent-head :global(.text-button) {
+		font-size: 11px;
+	}
+}
+@media (max-width: 375px) {
+	.secondary-stats strong {
+		font-size: 20px;
+	}
+}

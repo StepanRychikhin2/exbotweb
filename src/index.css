@@ -1,2 +1,1 @@
-/* MyEx visual tokens and responsive styles live in src/myex/styles.css. */
-body { margin: 0; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+@import './styles/global.css';

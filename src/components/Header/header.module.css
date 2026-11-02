@@ -1,0 +1,67 @@
+
+.app-top {
+	height: 94px;
+	padding: 20px 48px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 20px;
+}
+.desktop-welcome {
+	font-size: 11px;
+	color: var(--faint);
+}
+.top-tools {
+	display: flex;
+	align-items: center;
+	gap: 11px;
+	margin-left: auto;
+}
+.mobile-brand {
+	display: none;
+}
+@media (min-width: 1400px) {
+	.app-top {
+		max-width: 1120px;
+		margin: auto;
+	}
+}
+@media (max-width: 1150px) {
+	.app-top {
+		padding-inline: 30px;
+	}
+}
+@media (max-width: 900px) {
+	.mobile-brand {
+		display: flex;
+	}
+	.desktop-welcome {
+		display: none;
+	}
+	.app-top {
+		height: 80px;
+		padding: 18px 30px;
+	}
+	.app-top :global(.brand) {
+		font-size: 23px;
+	}
+}
+@media (max-width: 650px) {
+	.app-top {
+		height: 76px;
+		padding: 17px 23px;
+		gap: 8px;
+	}
+	.top-tools {
+		gap: 5px;
+	}
+	.top-tools > :global(.icon-button) {
+		width: 37px;
+		min-width: 37px;
+	}
+}
+@media (max-width: 375px) {
+	.app-top {
+		padding-inline: 19px;
+	}
+}

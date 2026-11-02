@@ -1,0 +1,151 @@
+
+.report-category {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	color: var(--muted);
+	font-size: 12px;
+	margin-bottom: 24px;
+}
+.report-category select {
+	max-width: 260px;
+	min-height: 44px;
+	font-size: 13px;
+	margin-left: auto;
+}
+.report-summary {
+	border-radius: 18px;
+	padding: 28px 30px;
+	display: flex;
+	align-items: center;
+	gap: 23px;
+	margin-bottom: 24px;
+}
+.report-icon {
+	height: 64px;
+	width: 64px;
+	background: var(--blue-soft);
+	color: var(--blue);
+	display: grid;
+	place-items: center;
+	border-radius: 19px;
+}
+.report-summary > div > span {
+	display: block;
+	font-size: 12px;
+	color: var(--muted);
+}
+.report-summary strong {
+	display: block;
+	font-size: 38px;
+	font-weight: 550;
+	letter-spacing: -1.1px;
+	line-height: 1.35;
+	font-variant-numeric: tabular-nums;
+}
+.report-summary small {
+	color: var(--muted);
+	font-size: 11px;
+}
+.export-panel {
+	display: flex;
+	gap: 20px;
+	align-items: center;
+	padding: 28px 0;
+	margin-top: 12px;
+}
+.file-icon {
+	height: 60px;
+	width: 48px;
+	border: 1px solid var(--line);
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 2px;
+	flex-shrink: 0;
+	background: var(--surface);
+}
+.file-icon > span {
+	font-size: 22px;
+	font-weight: 550;
+	color: var(--blue);
+}
+.file-icon > small {
+	font-size: 8px;
+	letter-spacing: 0.1em;
+	color: var(--muted);
+}
+.export-panel h3 {
+	font-size: 14px;
+}
+.export-panel p {
+	font-size: 12px;
+	color: var(--muted);
+	margin-top: 8px;
+	max-width: 300px;
+}
+.export-panel > :global(.button) {
+	margin-left: auto;
+	min-width: 180px;
+	font-size: 12px;
+}
+@media (max-width: 1150px) {
+	.export-panel {
+		flex-wrap: wrap;
+	}
+	.export-panel > :global(.button) {
+		margin: 4px 0 0 68px;
+	}
+}
+@media (max-width: 650px) {
+	.report-category {
+		font-size: 11px;
+		gap: 12px;
+	}
+	.report-category select {
+		font-size: 12px;
+		max-width: 220px;
+	}
+	.report-summary {
+		padding: 24px 20px;
+		gap: 17px;
+	}
+	.report-icon {
+		width: 48px;
+		height: 56px;
+		border-radius: 15px;
+	}
+	.report-summary > div > span {
+		font-size: 10px;
+	}
+	.report-summary strong {
+		font-size: 30px;
+	}
+	.report-summary small {
+		font-size: 10px;
+	}
+	.export-panel {
+		gap: 15px;
+		padding-top: 23px;
+	}
+	.export-panel > div:nth-child(2) {
+		flex: 1;
+		min-width: 0;
+	}
+	.export-panel h3 {
+		font-size: 13px;
+		line-height: 1.5;
+	}
+	.export-panel p {
+		font-size: 11px;
+		line-height: 1.7;
+	}
+	.export-panel > :global(.button) {
+		margin: 5px 0 0;
+		width: 100%;
+		font-size: 13px;
+		min-height: 51px;
+	}
+}

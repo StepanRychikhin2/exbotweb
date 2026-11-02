@@ -1,0 +1,45 @@
+
+.comparison {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+	padding: 24px 0;
+	color: var(--blue);
+}
+.comparison > svg {
+	margin-top: 3px;
+}
+.comparison > div {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 5px 9px;
+}
+.comparison strong {
+	font-size: 13px;
+	font-weight: 550;
+}
+.comparison span {
+	color: var(--muted);
+	font-size: 12px;
+}
+.comparison small {
+	color: var(--faint);
+	font-size: 10px;
+	width: 100%;
+}
+@media (max-width: 650px) {
+	.comparison {
+		padding: 23px 0;
+		gap: 10px;
+	}
+	.comparison strong {
+		font-size: 12px;
+	}
+	.comparison span {
+		font-size: 11px;
+	}
+	.comparison small {
+		font-size: 9px;
+	}
+}

@@ -1,0 +1,30 @@
+
+.delete-icon {
+	height: 58px;
+	width: 58px;
+	border-radius: 18px;
+	background: var(--danger-bg);
+	color: var(--danger);
+	display: grid;
+	place-items: center;
+	margin-bottom: 22px;
+}
+.delete-summary {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 15px;
+	padding: 19px;
+	background: var(--field);
+	border-radius: 12px;
+	font-size: 14px;
+	margin: 20px 0;
+}
+.delete-summary strong {
+	overflow-wrap: anywhere;
+	max-width: 65%;
+}
+.delete-summary span {
+	white-space: nowrap;
+	font-variant-numeric: tabular-nums;
+}

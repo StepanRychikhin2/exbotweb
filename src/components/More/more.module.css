@@ -1,0 +1,76 @@
+
+.menu-list {
+	border-top: 1px solid var(--soft-line);
+	border-bottom: 1px solid var(--soft-line);
+}
+.menu-list > button {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+	width: 100%;
+	min-height: 75px;
+	text-align: left;
+	padding: 13px 0;
+	border-bottom: 1px solid var(--soft-line);
+	font-size: 15px;
+}
+.menu-list > button:last-child {
+	border-bottom: 0;
+}
+.menu-list > button > svg:last-child {
+	margin-left: auto;
+	color: var(--muted);
+}
+.menu-icon {
+	height: 42px;
+	width: 42px;
+	border-radius: 13px;
+	background: var(--surface-raised);
+	display: grid;
+	place-items: center;
+	color: var(--muted);
+}
+.plan-card {
+	display: flex;
+	align-items: flex-start;
+	gap: 13px;
+	border: 1px solid var(--line);
+	padding: 22px;
+	border-radius: 17px;
+	margin-top: 28px;
+	background: var(--glass);
+}
+.plan-card > svg {
+	color: var(--blue);
+}
+.plan-card strong {
+	font-size: 13px;
+}
+.plan-card p {
+	font-size: 11px;
+	color: var(--muted);
+	margin-top: 7px;
+	max-width: 300px;
+}
+.plan-card > :global(.tag) {
+	margin-left: auto;
+}
+@media (max-width: 650px) {
+	.menu-list > button {
+		font-size: 14px;
+		min-height: 73px;
+	}
+	.plan-card {
+		padding: 20px 17px;
+		gap: 10px;
+	}
+	.plan-card strong {
+		font-size: 12px;
+	}
+	.plan-card p {
+		font-size: 10px;
+	}
+	.plan-card > :global(.tag) {
+		font-size: 8px;
+	}
+}

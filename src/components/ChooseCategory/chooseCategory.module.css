@@ -1,0 +1,23 @@
+
+.category-picker {
+	display: grid;
+	gap: 6px;
+}
+.category-picker > button {
+	display: flex;
+	align-items: center;
+	gap: 13px;
+	min-height: 62px;
+	padding: 8px;
+	border-radius: 12px;
+	width: 100%;
+	text-align: left;
+	font-size: 14px;
+}
+.category-picker > button:hover {
+	background: var(--surface-raised);
+}
+.category-picker > button > svg {
+	margin-left: auto;
+	color: var(--muted);
+}

@@ -1,0 +1,89 @@
+
+.blue-tag {
+	background: var(--blue-soft);
+	color: var(--blue);
+}
+.reminder-list {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+}
+.reminder-card :global(.section-head) {
+	margin-bottom: 23px;
+}
+.reminder-main {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+.reminder-main h3 {
+	font-size: 14px;
+	overflow-wrap: anywhere;
+}
+.reminder-main small {
+	color: var(--muted);
+	font-size: 11px;
+}
+.reminder-main strong {
+	font-size: 17px;
+	margin-left: auto;
+	white-space: nowrap;
+	font-variant-numeric: tabular-nums;
+}
+.reminder-channels {
+	display: flex;
+	gap: 13px;
+	margin-top: 17px;
+	color: var(--muted);
+	font-size: 10px;
+}
+.reminder-channels > span {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+}
+.reminder-card :global(.button) {
+	font-size: 12px;
+	min-height: 45px;
+}
+.reminder-actions {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 12px;
+}
+.reminder-actions button {
+	font-size: 12px;
+	color: var(--muted);
+	min-height: 42px;
+	padding: 7px 4px;
+}
+@media (max-width: 1150px) {
+	.reminder-list {
+		grid-template-columns: 1fr;
+	}
+}
+@media (max-width: 650px) {
+	.reminder-list {
+		grid-template-columns: 1fr;
+	}
+	.reminder-main h3 {
+		font-size: 13px;
+		line-height: 1.4;
+	}
+	.reminder-main strong {
+		font-size: 16px;
+	}
+	.reminder-main small {
+		font-size: 10px;
+	}
+	.reminder-card :global(.section-head) {
+		margin-bottom: 20px;
+	}
+	.reminder-card :global(.section-head) > :global(.muted) {
+		font-size: 11px;
+	}
+	.reminder-card :global(.button) {
+		font-size: 12px;
+		min-height: 47px;
+	}
+}

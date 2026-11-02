@@ -1,0 +1,129 @@
+
+.chart-switch button {
+	font-size: 10px;
+	padding: 6px 8px;
+	min-height: 30px;
+}
+.category-chart {
+	min-width: 0;
+}
+.category-bars {
+	display: grid;
+	gap: 19px;
+}
+.bar-main {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 12px;
+	width: 100%;
+	min-height: 32px;
+	padding: 0;
+	font-size: 12px;
+	text-align: left;
+}
+.bar-label {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	overflow-wrap: anywhere;
+}
+.bar-label i {
+	height: 7px;
+	width: 7px;
+	border-radius: 50%;
+	flex-shrink: 0;
+}
+.bar-main > span:last-child {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	white-space: nowrap;
+}
+.bar-main strong {
+	font-size: 12px;
+	font-variant-numeric: tabular-nums;
+	font-weight: 500;
+}
+.bar-main small {
+	font-size: 10px;
+	color: var(--muted);
+	width: 30px;
+	text-align: right;
+}
+.category-bar :global(.progress) {
+	height: 5px;
+	margin-top: 7px;
+}
+.donut-layout {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 23px;
+}
+.donut-layout .category-bars {
+	width: 100%;
+	gap: 8px;
+}
+.donut {
+	width: 184px;
+	height: 184px;
+	border-radius: 50%;
+	padding: 19px;
+	flex-shrink: 0;
+	margin: 4px auto;
+}
+.donut > div {
+	height: 100%;
+	width: 100%;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	background: var(--surface);
+	padding: 10px;
+}
+.donut small {
+	font-size: 10px;
+	color: var(--muted);
+}
+.donut strong {
+	font-size: 21px;
+	font-weight: 550;
+	margin-top: 5px;
+	font-variant-numeric: tabular-nums;
+	white-space: nowrap;
+	letter-spacing: -0.6px;
+}
+:global(.page-budget) > .category-chart {
+	max-width: 760px;
+}
+@media (max-width: 650px) {
+	.chart-switch button {
+		font-size: 10px;
+		padding: 6px 8px;
+		min-height: 29px;
+	}
+	.bar-main {
+		font-size: 12px;
+		min-height: 32px;
+	}
+	.category-bars {
+		gap: 17px;
+	}
+	.bar-main strong {
+		font-size: 12px;
+	}
+	.donut-layout {
+		gap: 19px;
+	}
+	.donut {
+		width: 185px;
+		height: 185px;
+		margin: 0 auto 3px;
+	}
+	.donut strong {
+		font-size: 22px;
+	}
+}

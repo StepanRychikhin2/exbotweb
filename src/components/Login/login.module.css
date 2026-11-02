@@ -1,0 +1,51 @@
+
+.login-modal {
+	text-align: center;
+	padding: 15px 2px 4px;
+}
+.login-icon {
+	height: 72px;
+	width: 72px;
+	border-radius: 24px;
+	background: var(--blue-soft);
+	color: var(--blue);
+	display: grid;
+	place-items: center;
+	margin: 0 auto 17px;
+}
+.login-modal > :global(.tag) {
+	margin-bottom: 20px;
+}
+.login-modal h2 {
+	padding: 0;
+	margin-bottom: 16px;
+	font-size: 28px;
+}
+.login-modal p {
+	font-size: 14px;
+	color: var(--muted);
+	line-height: 1.8;
+	margin-bottom: 8px;
+}
+.login-modal > small {
+	display: block;
+	font-size: 11px;
+	line-height: 1.7;
+	color: var(--muted);
+	margin-top: 18px;
+}
+@media (max-width: 650px) {
+	.login-modal {
+		padding: 10px 0;
+	}
+	.login-modal h2 {
+		font-size: 27px;
+		max-width: 100%;
+	}
+	.login-modal p {
+		font-size: 13px;
+	}
+	.login-modal > small {
+		font-size: 10px;
+	}
+}

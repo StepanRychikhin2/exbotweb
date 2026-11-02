@@ -1,0 +1,51 @@
+
+.page-heading {
+	margin-bottom: 32px;
+}
+.page-heading > div {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 20px;
+}
+.page-heading :global(.eyebrow) {
+	font-size: 10px;
+	margin-bottom: 14px;
+}
+.page-heading h1 {
+	font-size: 34px;
+	letter-spacing: -0.045em;
+}
+.subtitle {
+	color: var(--muted);
+	font-size: 14px;
+	margin-top: 11px;
+}
+.back-link {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	min-height: 44px;
+	padding: 0;
+	margin-bottom: 14px;
+	color: var(--muted);
+	font-size: 12px;
+}
+@media (max-width: 650px) {
+	.page-heading {
+		margin-bottom: 27px;
+	}
+	.page-heading :global(.eyebrow) {
+		font-size: 9px;
+		letter-spacing: 0.1em;
+		margin-bottom: 13px;
+	}
+	.page-heading h1 {
+		font-size: 29px;
+		letter-spacing: -0.045em;
+	}
+	.subtitle {
+		font-size: 12px;
+		margin-top: 10px;
+	}
+}

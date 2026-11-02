@@ -1,0 +1,20 @@
+
+.hero-bars {
+	display: grid;
+	gap: 17px;
+}
+.hero-bars > div > div:first-child {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	font-size: 12px;
+	margin-bottom: 7px;
+}
+.hero-bars strong {
+	font-weight: 500;
+	font-variant-numeric: tabular-nums;
+}
+.hero-bars :global(.progress) {
+	height: 5px;
+}
