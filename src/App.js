@@ -1,25 +1,25 @@
-import { useState, useRef, useEffect } from 'react';
-import { AppContext } from './context/AppContext';
-import { readStored, STORE, money, catName } from './mivo/model';
-import { copy } from './mivo/copy';
-import Sidebar from './components/Sidebar/sidebar';
-import BottomNav from './components/BottomNav/bottomNav';
-import Landing from './components/Landing/landing';
-import AddExpense from './components/AddExpense/addExpense';
-import Overview from './components/Overview/overview';
-import History from './components/History/history';
-import Categories from './components/Categories/categories';
-import CategoryDetail from './components/CategoryDetail/categoryDetail';
-import Budget from './components/Budget/budget';
-import Reports from './components/Reports/reports';
-import More from './components/More/more';
-import Settings from './components/Settings/settings';
-import Reminders from './components/Reminders/reminders';
-import Modal from './components/Modal/modal';
-import Header from './components/Header/header';
-import Toast from './components/Toast/toast';
-import { bindStyles } from './styles/bindStyles';
-import styles from './App.module.css';
+import { useState, useRef, useEffect } from 'react'
+import { AppContext } from './context/AppContext'
+import { readStored, STORE, money, catName } from './mivo/model'
+import { copy } from './mivo/copy'
+import Sidebar from './components/Sidebar/sidebar'
+import BottomNav from './components/BottomNav/bottomNav'
+import Landing from './components/Landing/landing'
+import AddExpense from './components/AddExpense/addExpense'
+import Overview from './components/Overview/overview'
+import History from './components/History/history'
+import Categories from './components/Categories/categories'
+import CategoryDetail from './components/CategoryDetail/categoryDetail'
+import Budget from './components/Budget/budget'
+import Reports from './components/Reports/reports'
+import More from './components/More/more'
+import Settings from './components/Settings/settings'
+import Reminders from './components/Reminders/reminders'
+import Modal from './components/Modal/modal'
+import Header from './components/Header/header'
+import Toast from './components/Toast/toast'
+import { bindStyles } from './styles/bindStyles'
+import styles from './App.module.css'
 
 function App() {
 	const [data, setData] = useState(readStored)
@@ -112,7 +112,7 @@ function App() {
 	return (
 		<AppContext.Provider value={value}>
 			<a
-				className={bindStyles(styles, "skip-link")}
+				className={bindStyles(styles, 'skip-link')}
 				href="#main-content"
 				onClick={(e) => {
 					e.preventDefault()
@@ -124,9 +124,9 @@ function App() {
 			{isLanding ? (
 				<Landing />
 			) : (
-				<div className={bindStyles(styles, "app-shell")}>
+				<div className={bindStyles(styles, 'app-shell')}>
 					<Sidebar />
-					<div className={bindStyles(styles, "workspace")}>
+					<div className={bindStyles(styles, 'workspace')}>
 						<Header />
 						<main
 							id="main-content"
@@ -147,11 +147,9 @@ function App() {
 					}
 				/>
 			)}
-			{toast && (
-				<Toast toast={toast} onClose={() => setToast(null)} />
-			)}
+			{toast && <Toast toast={toast} onClose={() => setToast(null)} />}
 		</AppContext.Provider>
 	)
 }
 
-export default App;
+export default App
