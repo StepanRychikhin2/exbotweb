@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { grouped, sum } from '../../myex/model';
+import { grouped, sum } from '../../mivo/model';
 import Icon from '../Icon/icon';
 import Empty from '../Empty/empty';
 import { bindStyles } from '../../styles/bindStyles';

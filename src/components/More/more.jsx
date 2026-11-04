@@ -35,7 +35,7 @@ function More() {
 			<div className={bindStyles(styles, "plan-card")}>
 				<Icon name="coffee" />
 				<div>
-					<strong>MyEx {t('free')}</strong>
+					<strong>Mivo {t('free')}</strong>
 					<p>{t('planSoon')}</p>
 				</div>
 				<span className={bindStyles(styles, "tag")}>{t('demo')}</span>

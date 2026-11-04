@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { AppContext } from './context/AppContext';
-import { readStored, STORE, money, catName } from './myex/model';
-import { copy } from './myex/copy';
+import { readStored, STORE, money, catName } from './mivo/model';
+import { copy } from './mivo/copy';
 import Sidebar from './components/Sidebar/sidebar';
 import BottomNav from './components/BottomNav/bottomNav';
 import Landing from './components/Landing/landing';

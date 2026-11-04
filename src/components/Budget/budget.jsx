@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { monthOf, today, sum, filtered } from '../../myex/model';
+import { monthOf, today, sum, filtered } from '../../mivo/model';
 import Icon from '../Icon/icon';
 import Button from '../Button/button';
 import IconButton from '../IconButton/iconButton';

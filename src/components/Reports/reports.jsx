@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { rangeFor, filtered, dateText, sum } from '../../myex/model';
-import { exportWorkbook } from '../../myex/export';
+import { rangeFor, filtered, dateText, sum } from '../../mivo/model';
+import { exportWorkbook } from '../../mivo/export';
 import Icon from '../Icon/icon';
 import Button from '../Button/button';
 import PageTitle from '../PageTitle/pageTitle';

@@ -1,3 +1,4 @@
+// Keep the original storage key so existing expenses survive the Mivo rename.
 export const STORE = 'myex-prototype-v1';
 export const today = () => new Intl.DateTimeFormat('en-CA', {
   timeZone: 'Europe/Kyiv',

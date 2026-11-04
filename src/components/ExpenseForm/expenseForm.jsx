@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { useApp } from '../../context/AppContext';
-import { minorText, today, parseMinor, uid } from '../../myex/model';
+import { minorText, today, parseMinor, uid } from '../../mivo/model';
 import Icon from '../Icon/icon';
 import Button from '../Button/button';
 import Field from '../Field/field';

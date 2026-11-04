@@ -1,5 +1,5 @@
 @font-face {
-	font-family: MyExSystem;
+	font-family: MivoSystem;
 	src: local('Inter'), local('Segoe UI');
 }
 :root {
@@ -68,7 +68,7 @@ body {
 	background: var(--bg);
 	color: var(--text);
 	font-family:
-		MyExSystem,
+		MivoSystem,
 		Inter,
 		-apple-system,
 		BlinkMacSystemFont,

@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { useApp } from '../../context/AppContext';
-import { shiftDay, nextDue, uid, today, dateText } from '../../myex/model';
+import { shiftDay, nextDue, uid, today, dateText } from '../../mivo/model';
 import Icon from '../Icon/icon';
 import Button from '../Button/button';
 import IconButton from '../IconButton/iconButton';

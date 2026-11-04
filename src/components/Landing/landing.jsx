@@ -225,7 +225,7 @@ function Landing() {
 			<footer className={bindStyles(styles, "landing-footer")}>
 				<Brand />
 				<span>{t('footer')}</span>
-				<span>© {new Date().getFullYear()} MyEx</span>
+				<span>© {new Date().getFullYear()} Mivo</span>
 			</footer>
 		</div>
 	)

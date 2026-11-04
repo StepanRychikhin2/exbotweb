@@ -1,5 +1,5 @@
 import { useApp } from '../../context/AppContext';
-import { today } from '../../myex/model';
+import { today } from '../../mivo/model';
 import Icon from '../Icon/icon';
 import { bindStyles } from '../../styles/bindStyles';
 import styles from './chooseCategory.module.css';

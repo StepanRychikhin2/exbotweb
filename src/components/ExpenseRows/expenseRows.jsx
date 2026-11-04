@@ -1,6 +1,6 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
-import { today, dateText, sum } from '../../myex/model';
+import { today, dateText, sum } from '../../mivo/model';
 import Icon from '../Icon/icon';
 import { bindStyles } from '../../styles/bindStyles';
 import styles from './expenseRows.module.css';

@@ -1,5 +1,5 @@
 import { useApp } from '../../context/AppContext';
-import { comparison, dateText } from '../../myex/model';
+import { comparison, dateText } from '../../mivo/model';
 import Icon from '../Icon/icon';
 import { bindStyles } from '../../styles/bindStyles';
 import styles from './comparison.module.css';

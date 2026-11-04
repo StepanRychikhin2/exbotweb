@@ -4,7 +4,7 @@ import styles from './brand.module.css';
 function Brand() {
 	return (
 		<span className={bindStyles(styles, "brand")}>
-			My<span>Ex</span>
+			Mi<span>vo</span>
 			<i />
 		</span>
 	)

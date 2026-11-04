@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { uid } from '../../myex/model';
+import { uid } from '../../mivo/model';
 import Icon from '../Icon/icon';
 import Button from '../Button/button';
 import Field from '../Field/field';

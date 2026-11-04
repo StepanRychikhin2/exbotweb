@@ -1,5 +1,5 @@
 import { useApp } from '../../context/AppContext';
-import { copy } from '../../myex/copy';
+import { copy } from '../../mivo/copy';
 import { bindStyles } from '../../styles/bindStyles';
 import styles from './heroBars.module.css';
 

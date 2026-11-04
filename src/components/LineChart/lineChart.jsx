@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
-import { shiftDay, sum, dateText } from '../../myex/model';
+import { shiftDay, sum, dateText } from '../../mivo/model';
 import { bindStyles } from '../../styles/bindStyles';
 import styles from './lineChart.module.css';
 

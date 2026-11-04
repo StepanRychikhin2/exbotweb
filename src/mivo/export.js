@@ -2,7 +2,7 @@ import { catName, grouped } from './model';
 export async function buildWorkbook(ExcelJS, rows, categories, lang, range) {
   const en = lang === 'en',
     book = new ExcelJS.Workbook();
-  book.creator = 'MyEx';
+  book.creator = 'Mivo';
   book.created = new Date();
   const sheet = book.addWorksheet(en ? 'Expenses' : 'Витрати');
   sheet.columns = [{
@@ -117,7 +117,7 @@ export async function exportWorkbook(rows, categories, lang, range) {
   }));
   const a = document.createElement('a');
   a.href = url;
-  a.download = `MyEx_${range.from}_${range.to}.xlsx`;
+  a.download = `Mivo_${range.from}_${range.to}.xlsx`;
   document.body.appendChild(a);
   a.click();
   a.remove();

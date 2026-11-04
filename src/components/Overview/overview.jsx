@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { rangeFor, filtered, monthOf, today, sum } from '../../myex/model';
+import { rangeFor, filtered, monthOf, today, sum } from '../../mivo/model';
 import Icon from '../Icon/icon';
 import PageTitle from '../PageTitle/pageTitle';
 import ExpenseRows from '../ExpenseRows/expenseRows';
