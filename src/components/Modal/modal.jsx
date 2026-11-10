@@ -4,6 +4,8 @@ import IconButton from '../IconButton/iconButton';
 import Login from '../Login/login';
 import ChooseCategory from '../ChooseCategory/chooseCategory';
 import ExpenseForm from '../ExpenseForm/expenseForm';
+import QuickExpenseForm from '../QuickExpenseForm/quickExpenseForm';
+import QuickExpenseAmount from '../QuickExpenseAmount/quickExpenseAmount';
 import DeleteForm from '../DeleteForm/deleteForm';
 import PeriodForm from '../PeriodForm/periodForm';
 import FiltersForm from '../FiltersForm/filtersForm';
@@ -28,6 +30,8 @@ function Modal() {
 	const contents = {
 		login: <Login />,
 		expense: <ExpenseForm />,
+		quickExpenseTemplate: <QuickExpenseForm />,
+		quickExpenseAmount: <QuickExpenseAmount />,
 		chooseCategory: <ChooseCategory />,
 		category: <CategoryForm />,
 		period: <PeriodForm />,

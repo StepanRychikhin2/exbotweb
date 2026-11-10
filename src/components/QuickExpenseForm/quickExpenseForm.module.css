@@ -1,0 +1,50 @@
+.help {
+	margin: -5px 0 15px;
+	color: var(--muted);
+	font-size: 12px;
+}
+
+.picker {
+	min-width: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.picker legend {
+	margin-bottom: 8px;
+	color: var(--muted);
+	font-size: 12px;
+}
+
+.icons {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(44px, 1fr));
+	gap: 7px;
+}
+
+.icons button {
+	display: grid;
+	min-height: 44px;
+	place-items: center;
+	border: 1px solid var(--line);
+	border-radius: 11px;
+	background: var(--field);
+}
+
+.icons button[aria-pressed='true'] {
+	border-color: var(--accent);
+	background: var(--blue-soft);
+	color: var(--blue);
+}
+
+.delete {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	width: 100%;
+	min-height: 44px;
+	margin-top: 6px;
+	color: var(--danger);
+}

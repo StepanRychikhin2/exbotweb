@@ -6,6 +6,7 @@ import Button from '../Button/button';
 import Empty from '../Empty/empty';
 import PageTitle from '../PageTitle/pageTitle';
 import ExpenseRows from '../ExpenseRows/expenseRows';
+import QuickExpenses from '../QuickExpenses/quickExpenses';
 import { bindStyles } from '../../styles/bindStyles';
 import styles from './addExpense.module.css';
 
@@ -85,6 +86,7 @@ function AddExpense() {
 							{t('review')}
 						</Button>
 					</form>
+					<QuickExpenses />
 					<button
 						className={bindStyles(styles, "category-entry")}
 						onClick={() =>
@@ -95,6 +97,15 @@ function AddExpense() {
 					>
 						<Icon name="grid" />
 						<span>{t('byCategory')}</span>
+						<Icon name="chevron" size={18} />
+					</button>
+					<button
+						type="button"
+						className={styles['category-entry']}
+						onClick={() => setModal({ type: 'quickExpenseTemplate' })}
+					>
+						<Icon name="plus" />
+						<span>{t('quickNewButton')}</span>
 						<Icon name="chevron" size={18} />
 					</button>
 					<div className={bindStyles(styles, "quiet-note")}>

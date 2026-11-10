@@ -42,14 +42,15 @@
 		margin-left: 0;
 	}
 	.app-main {
-		padding: 20px 30px 135px;
+		padding: 20px 30px calc(135px + env(safe-area-inset-bottom, 0px));
+		touch-action: pan-y pinch-zoom;
 		max-width: 800px;
 		min-height: calc(100dvh - 80px);
 	}
 }
 @media (max-width: 650px) {
 	.app-main {
-		padding: 19px 24px 128px;
+		padding: 19px 24px calc(128px + env(safe-area-inset-bottom, 0px));
 		min-height: calc(100dvh - 76px);
 	}
 }

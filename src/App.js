@@ -1,5 +1,7 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useLayoutEffect } from 'react'
 import { AppContext } from './context/AppContext'
+import { navs, getActiveTab } from './config/navigation'
+import { mobileTabQuery, useTabSwipe } from './hooks/useTabSwipe'
 import { readStored, STORE, money, catName } from './mivo/model'
 import { copy } from './mivo/copy'
 import Sidebar from './components/Sidebar/sidebar'
@@ -30,6 +32,8 @@ function App() {
 	const [modal, setModal] = useState(null)
 	const [toast, setToast] = useState(null)
 	const titleRef = useRef(null)
+	const pageContentRef = useRef(null)
+	const previousTab = useRef(null)
 	const t = (k) => copy[data.lang][k] || copy.uk[k] || k
 	const go = (r) => {
 		if (window.location.hash.slice(1) === r) setRoute(r)
@@ -91,6 +95,25 @@ function App() {
 	}
 	const page = route.split('/')[0]
 	const isLanding = page === 'landing' || !data.authenticated
+	const activeTab = isLanding ? null : getActiveTab(page)
+	const swipeHandlers = useTabSwipe({ activeTab, route, go, disabled: Boolean(modal) })
+
+	useLayoutEffect(() => {
+		const previous = previousTab.current
+		previousTab.current = activeTab
+		if (!previous || !activeTab || previous === activeTab) return
+		if (!window.matchMedia(mobileTabQuery).matches) return
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+		const from = navs.findIndex(([tab]) => tab === previous)
+		const to = navs.findIndex(([tab]) => tab === activeTab)
+		const offset = to > from ? 16 : -16
+		const animation = pageContentRef.current?.animate(
+			[{ transform: `translateX(${offset}px)`, opacity: .68 }, { transform: 'none', opacity: 1 }],
+			{ duration: 260, easing: 'cubic-bezier(.2, .78, .26, 1)' },
+		)
+		return () => animation?.cancel()
+	}, [activeTab])
 	useEffect(() => {
 		if (!isLanding)
 			titleRef.current?.focus({
@@ -133,10 +156,11 @@ function App() {
 							tabIndex={-1}
 							className={bindStyles(styles, `app-main page-${page}`)}
 							ref={titleRef}
+							{...swipeHandlers}
 						>
-							{sections[page] || <AddExpense />}
+							<div ref={pageContentRef}>{sections[page] || <AddExpense />}</div>
 						</main>
-						<BottomNav />
+						<BottomNav activeTab={activeTab} swipeHandlers={swipeHandlers} />
 					</div>
 				</div>
 			)}

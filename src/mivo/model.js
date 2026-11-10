@@ -249,6 +249,7 @@ export function initialData() {
     version: 1,
     expenses: rows,
     categories: categorySeed,
+    quickExpenses: [],
     budgets: {
       [m + '|UAH']: 2000000
     },

@@ -1,30 +1,36 @@
-import { useApp } from '../../context/AppContext';
-import { navs } from '../../config/navigation';
-import Icon from '../Icon/icon';
-import { bindStyles } from '../../styles/bindStyles';
-import styles from './bottomNav.module.css';
+import { useApp } from '../../context/AppContext'
+import { navs } from '../../config/navigation'
+import Icon from '../Icon/icon'
+import styles from './bottomNav.module.css'
 
-function BottomNav() {
-	const { t, route, go } = useApp()
-	const current = route.split('/')[0]
+function BottomNav({ activeTab, swipeHandlers }) {
+	const { data, t, route, go } = useApp()
+	const index = navs.findIndex(([tab]) => tab === activeTab)
+
 	return (
-		<nav className={bindStyles(styles, "bottom-nav")} aria-label={t('more')}>
-			{navs.map(([r, i]) => (
+		<nav
+			className={styles.bar}
+			aria-label={data.lang === 'uk' ? 'Головна навігація' : 'Main navigation'}
+			style={{ '--tab-count': navs.length, '--active-tab': index }}
+			{...swipeHandlers}
+		>
+			{index >= 0 && <span className={styles.indicator} aria-hidden="true" />}
+			{navs.map(([tab, icon]) => (
 				<button
-					key={r}
-					className={bindStyles(styles, `${r === 'add' ? 'nav-add' : ''} ${current === r ? 'active' : ''}`)}
-					onClick={() => go(r)}
-					aria-label={t(r)}
-					aria-current={current === r ? 'page' : undefined}
+					key={tab}
+					type="button"
+					className={styles.tab}
+					onClick={() => go(tab)}
+					aria-current={activeTab === tab ? (route === tab ? 'page' : 'location') : undefined}
 				>
-					<span>
-						<Icon name={i} />
+					<span className={tab === 'add' ? styles.addIcon : styles.icon}>
+						<Icon name={icon} size={tab === 'add' ? 19 : 21} />
 					</span>
-					{r !== 'add' && <small>{t(r)}</small>}
+					<small>{t(tab)}</small>
 				</button>
 			))}
 		</nav>
 	)
 }
 
-export default BottomNav;
+export default BottomNav

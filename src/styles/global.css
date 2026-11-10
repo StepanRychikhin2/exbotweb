@@ -1,7 +1,3 @@
-@font-face {
-	font-family: MivoSystem;
-	src: local('Inter'), local('Segoe UI');
-}
 :root {
 	color-scheme: dark;
 	--bg: #212529;
@@ -68,7 +64,7 @@ body {
 	background: var(--bg);
 	color: var(--text);
 	font-family:
-		MivoSystem,
+		Comfortaa,
 		Inter,
 		-apple-system,
 		BlinkMacSystemFont,

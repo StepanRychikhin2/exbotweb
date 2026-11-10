@@ -50,7 +50,7 @@ function LineChart({ rows, from, to }) {
 				<h2>{t('yourRhythm')}</h2>
 				<span className={bindStyles(styles, "muted")}>{data.currency}</span>
 			</div>
-			<div ref={ref} className={bindStyles(styles, "line-chart")}>
+			<div ref={ref} className={bindStyles(styles, "line-chart")} data-tab-swipe-ignore>
 				<svg
 					viewBox={`0 0 ${width} ${h}`}
 					role="img"

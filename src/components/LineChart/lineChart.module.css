@@ -14,10 +14,7 @@
 }
 .line-chart text {
 	fill: var(--muted);
-	font:
-		10px MivoSystem,
-		'Segoe UI',
-		sans-serif;
+	font-size: 10px;
 }
 .chart-grid {
 	stroke: var(--line);
